@@ -1,0 +1,16 @@
+*.log
+~*
+*.tmp
+*.txt
+dist
+*.test
+*.prof
+*.conf
+*.toml
+*.db
+rice*.go
+.git
+bin
+**/.env
+**/*.md
+deluge-*

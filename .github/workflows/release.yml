@@ -1,0 +1,68 @@
+name: release
+
+on:
+  push:
+    paths-ignore: ['.gitignore', '**/*.md']
+    branches: [master]
+    tags: ["*"]
+
+jobs:
+  goreleaser-publish-snapshot:
+    runs-on: ubuntu-latest
+    steps:
+    - id: goversion
+      run: |
+        echo ::set-output name=version::$(curl -s https://raw.githubusercontent.com/actions/go-versions/main/versions-manifest.json | sed -rn 's/.*"version": "([0-9]\.[0-9]+(\.[0-9]+)?)".*/\1/p' | head -1)
+    - uses: actions/setup-go@v2
+      with: { go-version: "${{ steps.goversion.outputs.version }}" }
+    - uses: actions/checkout@v2
+    - run: make fetch
+    - uses: goreleaser/goreleaser-action@v2
+      with:
+        version: latest
+        args: release --rm-dist --snapshot
+      env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+  goreleaser-publish-tags:
+    if: contains(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+    - id: goversion
+      run: |
+        echo ::set-output name=version::$(curl -s https://raw.githubusercontent.com/actions/go-versions/main/versions-manifest.json | sed -rn 's/.*"version": "([0-9]\.[0-9]+(\.[0-9]+)?)".*/\1/p' | head -1)
+    - uses: actions/setup-go@v2
+      with: { go-version: "${{ steps.goversion.outputs.version }}" }
+    - uses: actions/checkout@v2
+      with: { fetch-depth: 0 }
+    - run: make fetch
+    - run: |
+        echo "Docker Releases are [located here](https://github.com/users/lrstanley/deluge-remove-after/pkgs/container/deluge-remove-after)." >> notes-header.md
+        go version >> notes-footer.md
+    - uses: goreleaser/goreleaser-action@v2
+      with:
+        version: latest
+        args: release --rm-dist --skip-validate --release-header=notes-header.md --release-footer=notes-footer.md
+      env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+  docker-publish-tags:
+    if: contains(github.ref, 'refs/tags/v')
+    needs: [goreleaser-publish-tags]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: lrstanley/deluge-remove-after
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        tag_semver: true
+  docker-publish-latest:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: lrstanley/deluge-remove-after
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
