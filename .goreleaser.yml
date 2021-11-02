@@ -18,7 +18,7 @@ builds:
 nfpms:
   - homepage: https://github.com/lrstanley/deluge-remove-after
     maintainer: Liam Stanley <me@liamstanley.io>
-    description: deluge-remove-after -- daemon to remove torrents after filtered intervals
+    description: deluge-remove-after -- daemon for removing torrents from deluge after a specified timeframe
     license: MIT
     formats: [deb, rpm]
     bindir: /usr/bin

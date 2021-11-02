@@ -1,4 +1,4 @@
-<p align="center">deluge-remove-after -- remove torrents from deluge after a specified timeframe</p>
+<p align="center">deluge-remove-after -- daemon for removing torrents from deluge after a specified timeframe</p>
 <p align="center">
   <a href="https://github.com/lrstanley/deluge-remove-after/releases"><img src="https://github.com/lrstanley/deluge-remove-after/workflows/release/badge.svg" alt="Release Status"></a>
   <a href="https://github.com/lrstanley/deluge-remove-after/actions"><img src="https://github.com/lrstanley/deluge-remove-after/workflows/build/badge.svg" alt="Build Status"></a>
