@@ -10,9 +10,6 @@
 - [Why](#why)
 - [Installation](#installation)
   - [Docker](#docker)
-  - [Ubuntu/Debian](#ubuntudebian)
-  - [CentOS/Redhat](#centosredhat)
-  - [Manual Install](#manual-install)
   - [Build from source](#build-from-source)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -29,45 +26,13 @@ time seeded.
 ## Installation
 
 Check out the [releases](https://github.com/users/lrstanley/deluge-remove-after/pkgs/container/deluge-remove-after)
-page for prebuilt versions. deluge-remove-after should work on ubuntu/debian,
-centos/redhat/fedora, etc. Below are example commands of how you would install
+page for prebuilt versions. Below are example commands of how you would install
 the utility.
 
 ### Docker
 
 ```bash
 $ docker run -it --rm ghcr.io/lrstanley/deluge-remove-after:latest
-```
-
-### Ubuntu/Debian
-
-```bash
-$ wget https://liam.sh/ghr/deluge-remove-after_<version>_linux_amd64.deb
-$ dpkg -i deluge-remove-after_<version>_linux_amd64.deb
-$ deluge-remove-after --help
-```
-
-### CentOS/Redhat
-
-```bash
-$ yum localinstall https://liam.sh/ghr/deluge-remove-after_<version>_linux_amd64.rpm
-$ deluge-remove-after --help
-```
-
-Some older CentOS versions may require (if you get `Cannot open: <url>. Skipping.`):
-
-```console
-$ wget https://liam.sh/ghr/deluge-remove-after_<version>_linux_amd64.rpm
-$ yum localinstall deluge-remove-after_<version>_linux_amd64.rpm
-```
-
-### Manual Install
-
-```bash
-$ wget https://liam.sh/ghr/deluge-remove-after_<version>_linux_amd64.tar.gz
-$ tar -C /usr/bin/ -xzvf deluge-remove-after_<version>_linux_amd64.tar.gz deluge-remove-after
-$ chmod +x /usr/bin/deluge-remove-after
-$ deluge-remove-after --help
 ```
 
 ### Source
@@ -80,47 +45,7 @@ Note that you must have [Go](https://golang.org/doc/install) installed (latest i
 
 ## Usage
 
-Take a look at the [docker-compose.yaml] file. Note, all fields can be provided
-via environment variables (deluge-remove-after also supports `.env` files).
-
-```
-$ deluge-remove-after --help
-Usage:
-  deluge-remove-after [OPTIONS]
-
-Application Options:
-  -v, --version                                 display the version and exit
-  -D, --debug                                   enable bot debugging [$DEBUG]
-      --dry-run                                 dry-run operations (does NOT change/remove torrents)
-                                                [$DRY_RUN]
-
-Deluge & Torrent Options:
-  -u, --deluge.username=                        deluge username (NOT web-ui username) (default: localclient)
-                                                [$DELUGE_USERNAME]
-  -p, --deluge.password=                        deluge password (NOT web-ui password) [$DELUGE_PASSWORD]
-  -H, --deluge.hostname=                        deluge hostname (default: localhost) [$DELUGE_HOSTNAME]
-  -P, --deluge.port=                            deluge port (default: 58846) [$DELUGE_PORT]
-  -r, --deluge.remove-torrent                   Remove torrent (default pauses torrent)
-                                                [$DELUGE_REMOVE_TORRENT]
-  -R, --deluge.remove-files                     if true, when removing a torrent (see: --remove-torrent),
-                                                the torrent files will be removed as well
-                                                [$DELUGE_REMOVE_FILES]
-  -i, --deluge.check-interval=                  how often to check torrent statuses (format: s, m h)
-                                                (default: 6h) [$DELUGE_CHECK_INTERVAL]
-  -S, --deluge.max-seed-time=                   max time a completed torrent can be seeded for (format: s, m
-                                                h) (default: 336h) [$DELUGE_MAX_SEED_TIME]
-  -M, --deluge.max-time-added=                  amount of time after a completed torrent was added to
-                                                deluge, before it should be removed (format: s, m h)
-                                                [$DELUGE_MAX_TIME_ADDED]
-
-Logging Options:
-      --log.quiet                               disable logging to stdout (also: see levels) [$LOG_LOG_QUIET]
-      --log.level=[debug|info|warn|error|fatal] logging level (default: info) [$LOG_LOG_LEVEL]
-      --log.json                                output logs in JSON format [$LOG_LOG_JSON]
-
-Help Options:
-  -h, --help                                    Show this help message
-```
+Take a look at the [docker-compose.yaml] file.
 
 ## Contributing
 
