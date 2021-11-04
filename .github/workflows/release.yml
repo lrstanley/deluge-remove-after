@@ -20,4 +20,3 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         tag_semver: true
         snapshot: true
-        tags: "latest"
