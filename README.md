@@ -44,40 +44,8 @@ Note that you must have [Go](https://golang.org/doc/install) installed (latest i
 ## Usage
 
 Take a look at the [docker-compose.yaml](/docker-compose.yaml) file, or the above
-docker run commands.
-
-#### Application Options
-| Environment vars | Flags | Description |
-| --- | --- | --- |
-| N/A | `-v, --version` | display the version and exit |
-| `DEBUG` | `-D, --debug` | enable bot debugging |
-| `DRY_RUN` | `--dry-run` | dry-run operations (does NOT change/remove torrents) |
-| `NOTIFIERS` | `--notifiers` | list of shoutrrr notification urls: https://containrrr.dev/shoutrrr/) |
-
-#### Deluge & Torrent Options
-| Environment vars | Flags | Description |
-| --- | --- | --- |
-| `DELUGE_USERNAME` | `-u, --deluge.username` | deluge username (NOT web-ui username) [**default: localclient**] |
-| `DELUGE_PASSWORD` | `-p, --deluge.password` | deluge password (NOT web-ui password) |
-| `DELUGE_HOSTNAME` | `-H, --deluge.hostname` | deluge hostname [**default: localhost**] |
-| `DELUGE_PORT` | `-P, --deluge.port` | deluge port [**default: 58846**] |
-| `DELUGE_REMOVE_TORRENT` | `-r, --deluge.remove-torrent` | Remove torrent (default pauses torrent) |
-| `DELUGE_REMOVE_FILES` | `-R, --deluge.remove-files` | if true, when removing a torrent (see: --remove-torrent), the torrent files will be removed as well |
-| `DELUGE_CHECK_INTERVAL` | `-i, --deluge.check-interval` | how often to check torrent statuses (format: s, m h) [**default: 6h**] |
-| `DELUGE_MAX_SEED_TIME` | `-S, --deluge.max-seed-time` | max time a completed torrent can be seeded for (format: s, m h) [**default: 336h**] |
-| `DELUGE_MAX_TIME_ADDED` | `-M, --deluge.max-time-added` | amount of time after a completed torrent was added to deluge, before it should be removed (format: s, m h) |
-
-#### Logging Options
-| Environment vars | Flags | Description |
-| --- | --- | --- |
-| `LOG_QUIET` | `--log.quiet` | disable logging to stdout (also: see levels) |
-| `LOG_LEVEL` | `--log.level` | logging level [**default: info**] [**choices: debug, info, warn, error, fatal**] |
-| `LOG_JSON` | `--log.json` | output logs in JSON format |
-
-#### Help Options
-| Environment vars | Flags | Description |
-| --- | --- | --- |
-| N/A | `-h, --help` | Show this help message |
+docker run commands. For references on supported flags/environment variables,
+take a look at [USAGE.md](/USAGE.md)
 
 ## Contributing
 
