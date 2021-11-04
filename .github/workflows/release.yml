@@ -4,6 +4,7 @@ on:
   push:
     paths-ignore: ['.gitignore', '**/*.md']
     branches: [master]
+    tags: ["*"]
 
 jobs:
   docker-publish-tags:
