@@ -1,22 +1,21 @@
-name: release
+name: pr
 
 on:
-  push:
+  pull_request:
     paths-ignore: ['.gitignore', '**/*.md']
     branches: [master]
 
 jobs:
   docker-publish-tags:
-    if: contains(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - uses: jwalton/gh-find-current-pr@v1
+      id: pr
     - uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: lrstanley/deluge-remove-after
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-        tag_semver: true
-        snapshot: true
-        tags: "latest"
+        tags: "pr-${{ steps.pr.outputs.pr }}"
