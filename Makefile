@@ -20,6 +20,9 @@ fetch: ## Fetches the necessary dependencies to build.
 clean: ## Cleans up generated files/folders from the build.
 	/bin/rm -rfv "dist/" "${BINARY}"
 
+generate-markdown:
+	go run *.go --generate-markdown
+
 build: fetch clean ## Compile binary with static assets embedded.
 	go build -ldflags '-d -s -w' -tags netgo -installsuffix netgo -v -o "${BINARY}"
 

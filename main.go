@@ -1,3 +1,6 @@
+// Copyright (c) Liam Stanley <me@liamstanley.io>. All rights reserved. Use
+// of this source code is governed by the MIT license that can be found in
+// the LICENSE file.
 package main
 
 import (
@@ -16,6 +19,7 @@ import (
 	delugeclient "github.com/gdm85/go-libdeluge"
 	flags "github.com/jessevdk/go-flags"
 	_ "github.com/joho/godotenv/autoload"
+	goflagsmarkdown "github.com/lrstanley/goflags-markdown"
 )
 
 var (
@@ -30,8 +34,9 @@ var (
 )
 
 type Flags struct {
-	VersionFlag bool `short:"v" long:"version" description:"display the version and exit"`
-	Debug       bool `env:"DEBUG" short:"D" long:"debug" description:"enable bot debugging"`
+	VersionFlag  bool `short:"v" long:"version" description:"display the version and exit"`
+	MarkdownFlag bool `long:"generate-markdown" hidden:"true"`
+	Debug        bool `env:"DEBUG" short:"D" long:"debug" description:"enable bot debugging"`
 
 	DryRun bool `env:"DRY_RUN" long:"dry-run" description:"dry-run operations (does NOT change/remove torrents)"`
 
@@ -53,9 +58,9 @@ type Flags struct {
 	} `group:"Deluge & Torrent Options" namespace:"deluge" env-namespace:"DELUGE"`
 
 	Log struct {
-		Quiet bool   `env:"LOG_QUIET" long:"quiet" description:"disable logging to stdout (also: see levels)"`
-		Level string `env:"LOG_LEVEL" long:"level" default:"info" choice:"debug" choice:"info" choice:"warn" choice:"error" choice:"fatal"  description:"logging level"`
-		JSON  bool   `env:"LOG_JSON" long:"json" description:"output logs in JSON format"`
+		Quiet bool   `env:"QUIET" long:"quiet" description:"disable logging to stdout (also: see levels)"`
+		Level string `env:"LEVEL" long:"level" default:"info" choice:"debug" choice:"info" choice:"warn" choice:"error" choice:"fatal"  description:"logging level"`
+		JSON  bool   `env:"JSON" long:"json" description:"output logs in JSON format"`
 	} `group:"Logging Options" namespace:"log" env-namespace:"LOG"`
 }
 
@@ -63,12 +68,15 @@ func main() {
 	var err error
 
 	parser := flags.NewParser(cli, flags.HelpFlag|flags.PrintErrors|flags.PassDoubleDash)
-	parser.NamespaceDelimiter = "."
-	parser.EnvNamespaceDelimiter = "_"
 
 	if _, err = parser.Parse(); err != nil {
 		// fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
+	}
+
+	if cli.MarkdownFlag {
+		goflagsmarkdown.Generate(parser, os.Stdout)
+		os.Exit(0)
 	}
 
 	if cli.VersionFlag {

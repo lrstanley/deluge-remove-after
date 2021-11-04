@@ -8,6 +8,7 @@ require (
 	github.com/gdm85/go-libdeluge v0.5.5
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/joho/godotenv v1.4.0
+	github.com/lrstanley/goflags-markdown v0.0.0-20211104045346-baa622d7ff79
 )
 
 require (

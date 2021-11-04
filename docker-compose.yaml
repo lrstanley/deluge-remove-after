@@ -1,0 +1,13 @@
+---
+version: "3.8"
+
+services:
+  deluge-remove-after:
+    image: ghcr.io/lrstanley/deluge-remove-after:latest
+    restart: unless-stopped
+    environment:
+      - DRY_RUN=true
+      - DELUGE_USERNAME=localclient
+      - DELUGE_PASSWORD=yourpassword
+      - DELUGE_REMOVE_TORRENT=true # will pause by default
+      - DELUGE_MAX_SEED_TIME=336h # 14d
