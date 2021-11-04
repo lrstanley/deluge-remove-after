@@ -3,7 +3,8 @@ name: pr
 on:
   pull_request:
     paths-ignore: ['.gitignore', '**/*.md']
-    branches: [master]
+    branches:
+      - master
 
 jobs:
   docker-publish-tags:
