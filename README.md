@@ -1,8 +1,7 @@
 <p align="center">deluge-remove-after -- daemon for removing torrents from deluge after a specified timeframe</p>
 <p align="center">
   <a href="https://github.com/lrstanley/deluge-remove-after/releases"><img src="https://github.com/lrstanley/deluge-remove-after/workflows/release/badge.svg" alt="Release Status"></a>
-  <a href="https://github.com/lrstanley/deluge-remove-after/actions"><img src="https://github.com/lrstanley/deluge-remove-after/workflows/build/badge.svg" alt="Build Status"></a>
-  <a href="https://github.com/users/lrstanley/packages/container/deluge-remove-after/versions"><img src="https://img.shields.io/badge/Docker-lrstanley%2Fdeluge--remove--after-blue.svg" alt="Docker"></a>
+  <a href="https://github.com/users/lrstanley/packages/container/deluge-remove-after/versions"><img src="https://img.shields.io/badge/Docker-ghcr.io%2Flrstanley%2Fdeluge--remove--after-blue.svg" alt="Docker"></a>
   <a href="https://liam.sh/chat"><img src="https://img.shields.io/badge/Community-Chat%20with%20us-green.svg" alt="Community Chat"></a>
 </p>
 
