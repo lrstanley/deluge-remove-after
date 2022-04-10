@@ -5,16 +5,16 @@ go 1.17
 require (
 	github.com/apex/log v1.9.0
 	github.com/containrrr/shoutrrr v0.5.2
-	github.com/gdm85/go-libdeluge v0.5.5
+	github.com/gdm85/go-libdeluge v0.5.6
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/joho/godotenv v1.4.0
+	github.com/lrstanley/goflags-markdown v0.0.0-20211104160048-1eaccbc6e2ee
 )
 
 require (
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/gdm85/go-rencode v0.1.8 // indirect
-	github.com/lrstanley/goflags-markdown v0.0.0-20211104160048-1eaccbc6e2ee // indirect
 	github.com/mattn/go-colorable v0.1.11 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/nxadm/tail v1.4.8 // indirect
