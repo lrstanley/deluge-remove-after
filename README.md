@@ -4,9 +4,6 @@
 <p align="center">
 
 
-  <a href="https://github.com/lrstanley/deluge-remove-after/actions?query=workflow%3Arelease+event%3Apush">
-    <img alt="GitHub Workflow Status (release @ master)" src="https://img.shields.io/github/workflow/status/lrstanley/deluge-remove-after/release/master?label=release&style=flat-square&event=push">
-  </a>
 
 
   <a href="https://github.com/lrstanley/deluge-remove-after/actions?query=workflow%3Atest+event%3Apush">
