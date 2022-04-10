@@ -11,8 +11,3 @@ jobs:
       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     with:
       scan: false
-  go-release:
-    uses: lrstanley/.github/.github/workflows/lang-go-release.yml@master
-    with:
-      has-ghcr: true
-      upload-artifacts: true
