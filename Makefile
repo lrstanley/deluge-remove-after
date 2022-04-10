@@ -24,7 +24,7 @@ generate-markdown:
 	go run *.go --generate-markdown > USAGE.md
 
 build: fetch clean ## Compile binary with static assets embedded.
-	go build -ldflags '-d -s -w' -tags netgo -installsuffix netgo -v -o "${BINARY}"
+	CGO_ENABLED=0 go build -ldflags '-d -s -w -extldflags=-static' -tags=netgo,osusergo,static_build -installsuffix netgo -buildvcs=false -trimpath -o "${BINARY}"
 
 debug: clean
-	go run -v *.go --debug
+	go run *.go --debug

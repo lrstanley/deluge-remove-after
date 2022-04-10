@@ -2,21 +2,17 @@ name: release
 
 on:
   push:
-    paths-ignore: ['.gitignore', '**/*.md']
-    branches: [master]
-    tags: ["*"]
+    tags: [v*]
 
 jobs:
-  docker-publish-tags:
-    if: contains(github.ref, 'refs/tags/v')
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: elgohr/Publish-Docker-Github-Action@master
-      with:
-        name: lrstanley/deluge-remove-after
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        tag_semver: true
-        snapshot: true
+  docker-release:
+    uses: lrstanley/.github/.github/workflows/docker-release.yml@master
+    secrets:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    with:
+      scan: false
+  go-release:
+    uses: lrstanley/.github/.github/workflows/lang-go-release.yml@master
+    with:
+      has-ghcr: true
+      upload-artifacts: true
