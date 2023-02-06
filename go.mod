@@ -7,7 +7,7 @@ require (
 	github.com/containrrr/shoutrrr v0.7.1
 	github.com/gdm85/go-libdeluge v0.5.6
 	github.com/jessevdk/go-flags v1.5.0
-	github.com/joho/godotenv v1.4.0
+	github.com/joho/godotenv v1.5.1
 	github.com/lrstanley/goflags-markdown v0.0.0-20220410033210-3085abe93875
 )
 
