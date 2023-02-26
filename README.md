@@ -66,6 +66,11 @@ seed ratio, but not based off time. This should allow you to combine the built-i
 seed ratio removal, with the ability to also remove after a certain amount of
 time seeded.
 
+## :raising_hand_man: Similar projects
+
+- [laur89/deluge-autoremoveplus](https://github.com/laur89/deluge-autoremoveplus) -- patched
+  version of the orignal AutoRemovePlus for Deluge
+
 ## :computer: Installation
 
 Check out the [releases](https://github.com/users/lrstanley/deluge-remove-after/pkgs/container/deluge-remove-after)
