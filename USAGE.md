@@ -1,11 +1,13 @@
+## :gear: Usage
 
 #### Application Options
 | Environment vars | Flags | Type | Description |
 | --- | --- | --- | --- |
-| - | `-v, --version` | bool | display the version and exit |
-| `DEBUG` | `-D, --debug` | bool | enable bot debugging |
 | `DRY_RUN` | `--dry-run` | bool | dry-run operations (does NOT change/remove torrents) |
 | `NOTIFIERS` | `--notifiers` | []string | list of shoutrrr notification urls: https://containrrr.dev/shoutrrr/) |
+| - | `-v, --version` | bool | prints version information and exits |
+| - | `--version-json` | bool | prints version information in JSON format and exits |
+| `DEBUG` | `-D, --debug` | bool | enables debug mode |
 
 #### Deluge & Torrent Options
 | Environment vars | Flags | Type | Description |
@@ -26,8 +28,5 @@
 | `LOG_QUIET` | `--log.quiet` | bool | disable logging to stdout (also: see levels) |
 | `LOG_LEVEL` | `--log.level` | string | logging level [**default: info**] [**choices: debug, info, warn, error, fatal**] |
 | `LOG_JSON` | `--log.json` | bool | output logs in JSON format |
-
-#### Help Options
-| Environment vars | Flags | Type | Description |
-| --- | --- | --- | --- |
-| - | `-h, --help` | - | Show this help message |
+| `LOG_PRETTY` | `--log.pretty` | bool | output logs in a pretty colored format (cannot be easily parsed) |
+| `LOG_PATH` | `--log.path` | string | path to log file (disables stdout logging) |

@@ -3,7 +3,7 @@ version: "3.8"
 
 services:
   deluge-remove-after:
-    image: ghcr.io/lrstanley/deluge-remove-after:0.0.1
+    image: ghcr.io/lrstanley/deluge-remove-after:latest
     restart: unless-stopped
     environment:
       - DRY_RUN=true

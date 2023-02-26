@@ -1,24 +1,58 @@
-.DEFAULT_GOAL := build
-BINARY=deluge-remove-after
+.DEFAULT_GOAL := build-all
 
-help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-12s\033[0m %s\n", $$1, $$2}'
+export PROJECT := "deluge-remove-after"
+export PACKAGE := "github.com/lrstanley/deluge-remove-after"
 
-fetch: ## Fetches the necessary dependencies to build.
+license:
+	curl -sL https://liam.sh/-/gh/g/license-header.sh | bash -s
+
+prepare: clean go-prepare
+	@echo
+
+build-all: prepare go-build
+	@echo
+
+clean:
+	/bin/rm -rfv ${PROJECT}
+
+docker-build:
+	docker build \
+		--pull \
+		--tag ${PROJECT} \
+		--force-rm .
+
+go-fetch:
 	go mod download
 	go mod tidy
 
-clean: ## Cleans up generated files/folders from the build.
-	/bin/rm -rfv "dist/" "${BINARY}"
+go-upgrade-deps:
+	go get -u ./...
+	go mod tidy
 
-generate-markdown:
-	go run *.go --generate-markdown > USAGE.md
-	
-prepare: fetch clean ## Prepare the dependencies needed for a build.
-	@echo
+go-upgrade-deps-patch:
+	go get -u=patch ./...
+	go mod tidy
 
-build: prepare ## Compile binary with static assets embedded.
-	CGO_ENABLED=0 go build -ldflags '-d -s -w -extldflags=-static' -tags=netgo,osusergo,static_build -installsuffix netgo -buildvcs=false -trimpath -o "${BINARY}"
+go-prepare: go-fetch
+	go generate -x ./...
+	{ echo '## :gear: Usage'; go run ${PACKAGE} --generate-markdown; } > USAGE.md
 
-debug: clean
-	go run *.go --debug
+go-dlv: go-prepare
+	dlv debug \
+		--headless --listen=:2345 \
+		--api-version=2 --log \
+		--allow-non-terminal-interactive \
+		${PACKAGE} -- --debug
+
+go-debug: go-prepare
+	go run ${PACKAGE} --debug
+
+go-build: go-prepare
+	CGO_ENABLED=0 \
+	go build \
+		-ldflags '-d -s -w -extldflags=-static' \
+		-tags=netgo,osusergo,static_build \
+		-installsuffix netgo \
+		-trimpath \
+		-o ${PROJECT} \
+		${PACKAGE}
