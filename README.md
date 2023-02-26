@@ -50,6 +50,7 @@
 ## :link: Table of Contents
 
   - [Why](#grey_question-why)
+  - [Similar projects](#raising_hand_man-similar-projects)
   - [Installation](#computer-installation)
     - [Container Images (ghcr)](#whale-container-images-ghcr)
     - [Source](#toolbox-source)
