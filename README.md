@@ -11,11 +11,11 @@
   </a>
 
 
+
+
   <a href="https://github.com/lrstanley/deluge-remove-after/actions?query=workflow%3Atest+event%3Apush">
-    <img title="GitHub Workflow Status (test @ master)" src="https://img.shields.io/github/workflow/status/lrstanley/deluge-remove-after/test/master?label=test&style=flat-square&event=push">
+    <img title="GitHub Workflow Status (test @ master)" src="https://img.shields.io/github/actions/workflow/status/lrstanley/deluge-remove-after/test.yml?branch=master&label=test&style=flat-square">
   </a>
-
-
 
   <a href="https://codecov.io/gh/lrstanley/deluge-remove-after">
     <img title="Code Coverage" src="https://img.shields.io/codecov/c/github/lrstanley/deluge-remove-after/master?style=flat-square">
