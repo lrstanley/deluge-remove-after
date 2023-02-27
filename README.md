@@ -83,8 +83,9 @@ page for prebuilt versions.
 
 ```console
 $ docker run -it --rm ghcr.io/lrstanley/deluge-remove-after:master
-$ docker run -it --rm ghcr.io/lrstanley/deluge-remove-after:1.0.1
+$ docker run -it --rm ghcr.io/lrstanley/deluge-remove-after:2.0.0
 $ docker run -it --rm ghcr.io/lrstanley/deluge-remove-after:latest
+$ docker run -it --rm ghcr.io/lrstanley/deluge-remove-after:1.0.1
 $ docker run -it --rm ghcr.io/lrstanley/deluge-remove-after:1.0.0
 $ docker run -it --rm ghcr.io/lrstanley/deluge-remove-after:0.0.1
 ```
