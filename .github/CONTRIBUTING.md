@@ -113,6 +113,6 @@ Below are a few guidelines if you would like to contribute:
 [discussions]: https://github.com/lrstanley/deluge-remove-after/discussions
 [issues]: https://github.com/lrstanley/deluge-remove-after/issues/new/choose
 [license]: https://github.com/lrstanley/deluge-remove-after/blob/master/LICENSE
-[pull-requests]: https://github.com/lrstanley/deluge-remove-after/issues/new/choose
+[pull-requests]: https://github.com/lrstanley/deluge-remove-after/pulls?q=is%3Aopen+is%3Apr
 [security]: https://github.com/lrstanley/deluge-remove-after/security/policy
 [support]: https://github.com/lrstanley/deluge-remove-after/blob/master/.github/SUPPORT.md
