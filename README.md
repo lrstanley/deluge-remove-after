@@ -50,13 +50,13 @@
 ## :link: Table of Contents
 
   - [Why](#grey_question-why)
-  - [Similar projects](#raising_hand_man-similar-projects)
-  - [Installation](#computer-installation)
-    - [Container Images (ghcr)](#whale-container-images-ghcr)
+  - [🙋‍♂️ Similar projects](#raising_hand_man-similar-projects)
+  - [💻 Installation](#computer-installation)
+    - [🐳 Container Images (ghcr)](#whale-container-images-ghcr)
     - [Source](#toolbox-source)
   - [⚙️ Usage](#gear-usage)
-  - [Support &amp; Assistance](#raising_hand_man-support--assistance)
-  - [🤝 Contributing](#handshake-contributing)
+  - [🙋‍♂️ Support &amp; Assistance](#raising_hand_man-support--assistance)
+  - [Contributing](#handshake-contributing)
   - [License](#balance_scale-license)
 <!-- template:end:toc -->
 
