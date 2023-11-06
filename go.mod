@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/apex/log v1.9.0
-	github.com/containrrr/shoutrrr v0.7.1
+	github.com/containrrr/shoutrrr v0.8.0
 	github.com/gdm85/go-libdeluge v0.5.6
 	github.com/joho/godotenv v1.5.1
 	github.com/lrstanley/clix v1.0.0
