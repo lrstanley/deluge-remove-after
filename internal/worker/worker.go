@@ -30,7 +30,7 @@ func (w *Worker) Watcher(ctx context.Context) error {
 	defer ticker.Stop()
 
 	// Run once on startup.
-	if err := w.checkStates(ctx); err != nil {
+	if err := w.CheckStates(ctx); err != nil {
 		return err
 	}
 
@@ -39,14 +39,14 @@ func (w *Worker) Watcher(ctx context.Context) error {
 		case <-ctx.Done():
 			return nil
 		case <-ticker.C:
-			if err := w.checkStates(ctx); err != nil {
+			if err := w.CheckStates(ctx); err != nil {
 				return err
 			}
 		}
 	}
 }
 
-func (w *Worker) checkStates(ctx context.Context) error {
+func (w *Worker) CheckStates(ctx context.Context) error {
 	l := log.FromContext(ctx)
 
 	l.Info("running checks")
@@ -124,7 +124,7 @@ func (w *Worker) process(ctx context.Context, state delugeclient.TorrentState) e
 	return nil
 }
 
-func (w *Worker) removeTorrent(ctx context.Context, hash string, torrent *delugeclient.TorrentStatus) {
+func (w *Worker) removeTorrent(ctx context.Context, hash string, _ *delugeclient.TorrentStatus) {
 	if w.DryRun {
 		return
 	}

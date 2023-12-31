@@ -9,6 +9,7 @@ import "time"
 type Flags struct {
 	DryRun    bool     `env:"DRY_RUN" long:"dry-run" description:"dry-run operations (does NOT change/remove torrents)"`
 	Notifiers []string `env:"NOTIFIERS" long:"notifiers" description:"list of shoutrrr notification urls: https://containrrr.dev/shoutrrr/)"`
+	NoDaemon  bool     `env:"NO_DAEMON" long:"no-daemon" description:"do not run as a daemon (run once and exit)"`
 
 	Deluge ConfigDeluge `group:"Deluge & Torrent Options" namespace:"deluge" env-namespace:"DELUGE"`
 }

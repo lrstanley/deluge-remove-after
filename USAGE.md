@@ -5,6 +5,7 @@
 | --- | --- | --- | --- |
 | `DRY_RUN` | `--dry-run` | bool | dry-run operations (does NOT change/remove torrents) |
 | `NOTIFIERS` | `--notifiers` | []string | list of shoutrrr notification urls: https://containrrr.dev/shoutrrr/) |
+| `NO_DAEMON` | `--no-daemon` | bool | do not run as a daemon (run once and exit) |
 | - | `-v, --version` | bool | prints version information and exits |
 | - | `--version-json` | bool | prints version information in JSON format and exits |
 | `DEBUG` | `-D, --debug` | bool | enables debug mode |

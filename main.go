@@ -94,7 +94,16 @@ func main() {
 		Notifiers: notifiers,
 	}
 
-	if err := clix.RunCtx(ctx, w.Watcher); err != nil {
+	if cli.Flags.NoDaemon {
+		err = w.CheckStates(ctx)
+		if err != nil {
+			logger.WithError(err).Fatal("error running worker")
+		}
+		return
+	}
+
+	err = clix.RunCtx(ctx, w.Watcher)
+	if err != nil {
 		logger.WithError(err).Fatal("error running worker")
 	}
 }
