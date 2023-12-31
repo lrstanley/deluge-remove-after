@@ -25,6 +25,12 @@ var (
 	logger log.Interface
 	cli    = &clix.CLI[models.Flags]{
 		Links: clix.GithubLinks("github.com/lrstanley/deluge-remove-after", "master", "https://liam.sh"),
+		VersionInfo: &clix.VersionInfo[models.Flags]{
+			Name:    "deluge-remove-after",
+			Version: version,
+			Commit:  commit,
+			Date:    date,
+		},
 	}
 
 	notifiers *router.ServiceRouter
