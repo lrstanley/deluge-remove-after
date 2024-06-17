@@ -8,7 +8,7 @@ COPY . /build/
 RUN make
 
 # runtime image
-FROM alpine:3.18
+FROM alpine:3.20
 RUN apk add --no-cache ca-certificates
 COPY --from=build /build/deluge-remove-after /usr/local/bin/deluge-remove-after
 
